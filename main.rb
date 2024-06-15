@@ -6,12 +6,15 @@ $conversion_hash = {
     'y' => 25, 'z' => 26
 }
 
-def caesar_cipher(phrase) 
+$inverted_conversion = $conversion_hash.invert 
+$new_word = ''
+def caesar_cipher(phrase, num) 
     word_len = phrase.length - 1
     for i in 0..word_len
-        puts phrase[i]
-        puts $conversion_hash[phrase[i].downcase]
+        key_val = $conversion_hash[phrase[i].downcase] + num 
+        $new_word << $inverted_conversion[key_val] 
     end
+    puts $new_word
 end 
 
-caesar_cipher("Hello")
+caesar_cipher("Hello", 5)
