@@ -1,4 +1,4 @@
-conversion_hash = {
+$conversion_hash = {
     'a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5, 'f' => 6,
     'g' => 7, 'h' => 8, 'i' => 9, 'j' => 10, 'k' => 11, 'l' => 12,
     'm' => 13, 'n' => 14, 'o' => 15, 'p' => 16, 'q' => 17, 'r' => 18,  
@@ -6,3 +6,12 @@ conversion_hash = {
     'y' => 25, 'z' => 26
 }
 
+def caesar_cipher(phrase) 
+    word_len = phrase.length - 1
+    for i in 0..word_len
+        puts phrase[i]
+        puts $conversion_hash[phrase[i].downcase]
+    end
+end 
+
+caesar_cipher("Hello")
