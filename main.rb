@@ -14,10 +14,20 @@ def caesar_cipher(phrase, num)
         if $conversion_hash.keys.include?(phrase[i]) == true
             if phrase[i] == phrase[i].upcase
                 key_val = $conversion_hash[phrase[i].downcase] + num 
-                $new_word << $inverted_conversion[key_val].upcase 
+                    if key_val > 26
+                        key_val = key_val - 26 
+                        $new_word << $inverted_conversion[key_val].upcase
+                    else 
+                        $new_word << $inverted_conversion[key_val].upcase 
+                    end 
             else 
                 key_val = $conversion_hash[phrase[i].downcase] + num
-                $new_word << $inverted_conversion[key_val].to_s 
+                    if key_val > 26
+                        key_val = key_val - 26 
+                        $new_word << $inverted_conversion[key_val].to_s
+                    else         
+                        $new_word << $inverted_conversion[key_val].to_s 
+                    end 
             end
         else 
             if phrase[i] == ' '
@@ -30,4 +40,4 @@ def caesar_cipher(phrase, num)
     puts $new_word
 end 
 
-caesar_cipher("Hello, my", 5)
+caesar_cipher("Hello, my name is Junho", 5)
