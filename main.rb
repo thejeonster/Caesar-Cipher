@@ -11,10 +11,23 @@ $new_word = ''
 def caesar_cipher(phrase, num) 
     word_len = phrase.length - 1
     for i in 0..word_len
-        key_val = $conversion_hash[phrase[i].downcase] + num 
-        $new_word << $inverted_conversion[key_val] 
+        if $conversion_hash.keys.include?(phrase[i]) == true
+            if phrase[i] == phrase[i].upcase
+                key_val = $conversion_hash[phrase[i].downcase] + num 
+                $new_word << $inverted_conversion[key_val].upcase 
+            else 
+                key_val = $conversion_hash[phrase[i].downcase] + num
+                $new_word << $inverted_conversion[key_val].to_s 
+            end
+        else 
+            if phrase[i] == ' '
+                $new_word << ' '
+            else 
+                $new_word << phrase[i]
+            end 
+        end 
     end
     puts $new_word
 end 
 
-caesar_cipher("Hello", 5)
+caesar_cipher("Hello, my", 5)
